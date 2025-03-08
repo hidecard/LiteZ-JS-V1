@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LiteZ z-bind Example</title>
+  <title>LiteZ Text Interpolation Example</title>
 </head>
 <body>
   <div id="app">
@@ -14,14 +14,15 @@
       el: '#app',
       data() {
         return {
-          title: 'z-bind ဥပမာ',
-          titleClass: 'highlight'
+          title: 'z-bind ဥပမာ', // Title text
+          titleClass: 'highlight' // Class to bind to the h1 element
         };
       }
     });
   </script>
 
   <style>
+    /* Define the highlight class */
     .highlight { color: blue; font-weight: bold; }
   </style>
 </body>
