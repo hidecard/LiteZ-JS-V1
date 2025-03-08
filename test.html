@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LiteZ Example</title>
+    <script src="./litez.js"></script>
+    <style>
+        .todo-list { padding: 0; }
+        .todo-item { padding: 10px; border-bottom: 1px solid #eee; }
+        .error { color: red; padding: 10px; }
+        .completed { text-decoration: line-through; }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // [Paste the corrected LiteZ framework code from above here]
+
+        LiteZ.component('todo-item', {
+            template: `
+                <li class="todo-item">
+                    <span z-bind:class="completed ? 'completed' : ''">{{text}}</span>
+                    <button z-on:click="toggle">✓</button>
+                    <button z-on:click="remove">✕</button>
+                </li>
+            `,
+            data: () => ({
+                text: '',
+                completed: false
+            }),
+            methods: {
+                toggle() {
+                    this.completed = !this.completed;
+                },
+                remove() {
+                    this.text = '[Removed]';
+                    this.completed = true;
+                }
+            },
+            mounted() {
+                console.log(`Todo item "${this.text}" mounted`);
+            }
+        });
+
+        const app = LiteZ.createApp({
+            el: '#app',
+            data: () => ({
+                message: 'Welcome to LiteZ',
+                todos: ['Learn JavaScript', 'Build App', 'Deploy'],
+                newTodo: '',
+                showCompleted: true,
+                error: null
+            }),
+            template: `
+                <div>
+                    <h1>{{message}}</h1>
+                    <div class="error" z-if="error">
+                        Error: {{error.message}} ({{error.context}})
+                    </div>
+                    <input z-model="newTodo" placeholder="Add todo">
+                    <button z-on:click="addTodo">Add</button>
+                    <ul class="todo-list">
+                        <todo-item 
+                            z-for="todo in todos" 
+                            z-prop:text="todo"
+                            z-show="showCompleted || !completed">
+                        </todo-item>
+                    </ul>
+                    <label>
+                        <input type="checkbox" z-model="showCompleted">
+                        Show completed
+                    </label>
+                    <p>Total todos: {{todos.length}}</p>
+                </div>
+            `,
+            methods: {
+                addTodo() {
+                    if (this.newTodo.trim()) {
+                        this.todos.push(this.newTodo.trim());
+                        this.newTodo = '';
+                    }
+                }
+            },
+            beforeCreate() {
+                console.log('App: Before create');
+            },
+            created() {
+                console.log('App: Created');
+            },
+            mounted() {
+                console.log('App: Mounted');
+            }
+        });
+    </script>
+</body>
+</html>
