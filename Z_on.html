@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-on Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <button z-on:click="changeTitle">ခေါင်းစဉ် ပြောင်းမယ်</button>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-on ဥပမာ'
+        };
+      },
+      methods: {
+        changeTitle() {
+          this.title = 'ခေါင်းစဉ် အသစ်!';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

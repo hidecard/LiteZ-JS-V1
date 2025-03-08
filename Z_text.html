@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-text Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <span z-text="textContent"></span>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-text ဥပမာ',
+          textContent: 'ဒါက ရိုးရိုး စာသားပါ'
+        };
+      }
+    });
+  </script>
+</body>
+</html>

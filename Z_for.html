@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-for Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <ul>
+      <li z-for="item in items">{{item}} (အစဉ်: {{item.index}})</li>
+    </ul>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-for ဥပမာ',
+          items: ['ပန်းသီး', 'လိမ္မော်', 'စတော်ဘယ်ရီ']
+        };
+      }
+    });
+  </script>
+</body>
+</html>

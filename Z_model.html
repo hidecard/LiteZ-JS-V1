@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-model Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <input z-model="inputText" placeholder="စာရိုက်ပါ" />
+    <p>သင်ရိုက်ထည့်တာ: {{inputText}}</p>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-model ဥပမာ',
+          inputText: ''
+        };
+      }
+    });
+  </script>
+</body>
+</html>

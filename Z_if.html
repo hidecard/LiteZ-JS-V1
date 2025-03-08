@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-if/z-else Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <div z-if="isVisible">
+      <p>ဒါက ပြမှာပါ</p>
+    </div>
+    <div z-else>
+      <p>ဒါက မပြဘူး</p>
+    </div>
+    <button z-on:click="toggleVisibility">ဖွင့်/ပိတ်</button>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-if/z-else ဥပမာ',
+          isVisible: true
+        };
+      },
+      methods: {
+        toggleVisibility() {
+          this.isVisible = !this.isVisible;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

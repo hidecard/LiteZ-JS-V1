@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ with All Directives Fixed</title>
+</head>
+<body>
+  <div id="app">
+    <h1 z-bind:class="titleClass">{{title}}</h1>
+
+    <!-- z-for -->
+    <ul>
+      <li z-for="item in items">{{item}} (အစဉ်: {{item.index}})</li>
+    </ul>
+
+    <!-- z-if နဲ့ z-else -->
+    <div z-if="showCounter">
+      <counter-component z-prop:initial="startValue"></counter-component>
+    </div>
+    <div z-else>
+      <p>ကောင်တာ မပြပါ။</p>
+    </div>
+
+    <!-- z-show -->
+    <p z-show="showText">ဒီစာသားကို ဖွင့်/ပိတ် လုပ်နိုင်တယ်</p>
+
+    <!-- z-html -->
+    <div z-html="htmlContent"></div>
+
+    <!-- z-text -->
+    <span z-text="textContent"></span>
+
+    <!-- z-model -->
+    <input z-model="inputText" placeholder="စာရိုက်ပါ" />
+
+    <!-- z-on -->
+    <button z-on:click="toggleCounter">ကောင်တာ ဖွင့်/ပိတ်</button>
+    <button z-on:click="toggleText">စာသား ဖွင့်/ပိတ်</button>
+    <button z-on:mouseover="changeTitle">ခေါင်းစဉ် ပြောင်းမယ်</button>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    LiteZ.component('counter-component', {
+      template: `
+        <div data-component="counter-component">
+          ရေတွက်: {{count}}
+          <button z-on:click="increment">တိုးမယ်</button>
+          <input z-model="count" type="number">
+        </div>
+      `,
+      data() {
+        return { count: 0 };
+      },
+      methods: {
+        increment() {
+          this.count++;
+        }
+      }
+    });
+
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'LiteZ နဲ့ Directives အကုန်',
+          titleClass: 'highlight',
+          items: ['ပန်းသီး', 'လိမ္မော်', 'စတော်ဘယ်ရီ'],
+          startValue: 5,
+          showCounter: true,
+          showText: true,
+          htmlContent: '<strong>ဒါက HTML စာသားပါ</strong>',
+          textContent: 'ဒါက ရိုးရိုး စာသားပါ',
+          inputText: ''
+        };
+      },
+      methods: {
+        toggleCounter() {
+          this.showCounter = !this.showCounter;
+        },
+        toggleText() {
+          this.showText = !this.showText;
+        },
+        changeTitle() {
+          this.title = 'ခေါင်းစဉ် အသစ်!';
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .highlight { color: blue; font-weight: bold; }
+  </style>
+</body>
+</html>

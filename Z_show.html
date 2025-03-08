@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-show Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <p z-show="isVisible">ဒီစာသားကို ဖွင့်/ပိတ် လုပ်နိုင်တယ်</p>
+    <button z-on:click="toggleVisibility">ဖွင့်/ပိတ်</button>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-show ဥပမာ',
+          isVisible: true
+        };
+      },
+      methods: {
+        toggleVisibility() {
+          this.isVisible = !this.isVisible;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

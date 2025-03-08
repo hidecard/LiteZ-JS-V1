@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-bind:class Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1 z-bind:class="titleClass">{{title}}</h1>
+    <button z-on:click="toggleClass">Class ပြောင်းမယ်</button>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-bind:class ဥပမာ',
+          titleClass: 'highlight'
+        };
+      },
+      methods: {
+        toggleClass() {
+          this.titleClass = this.titleClass === 'highlight' ? 'normal' : 'highlight';
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .highlight { color: blue; font-weight: bold; }
+    .normal { color: black; font-weight: normal; }
+  </style>
+</body>
+</html>

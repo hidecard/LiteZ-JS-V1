@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-bind Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1 z-bind:class="titleClass">{{title}}</h1>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-bind ဥပမာ',
+          titleClass: 'highlight'
+        };
+      }
+    });
+  </script>
+
+  <style>
+    .highlight { color: blue; font-weight: bold; }
+  </style>
+</body>
+</html>

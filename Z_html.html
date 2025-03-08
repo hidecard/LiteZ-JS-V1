@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ z-html Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <div z-html="htmlContent"></div>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'z-html ဥပမာ',
+          htmlContent: '<strong>ဒါက HTML စာသားပါ</strong>'
+        };
+      }
+    });
+  </script>
+</body>
+</html>

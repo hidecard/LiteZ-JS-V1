@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiteZ Component Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <counter-component z-prop:initial="startValue"></counter-component>
+  </div>
+
+  <script src="litez.js"></script>
+  <script>
+    LiteZ.component('counter-component', {
+      template: `
+        <div data-component="counter-component">
+          ရေတွက်: {{count}}
+          <button z-on:click="increment">တိုးမယ်</button>
+          <input z-model="count" type="number">
+        </div>
+      `,
+      data() {
+        return { count: 0 };
+      },
+      methods: {
+        increment() {
+          this.count++;
+        }
+      }
+    });
+
+    const app = LiteZ.createApp({
+      el: '#app',
+      data() {
+        return {
+          title: 'Component ဥပမာ',
+          startValue: 5
+        };
+      }
+    });
+  </script>
+</body>
+</html>
